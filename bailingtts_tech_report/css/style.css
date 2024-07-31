@@ -1,0 +1,55 @@
+body {
+	text-align: center;
+}
+
+.main-content {
+	display: inline-block;
+	width: 1024px;
+	text-align: left;
+}
+
+h1 {
+	font-size: xx-large;
+	text-align: center;
+}
+
+h2 {
+	font-size: x-large;
+}
+
+h3 {
+	font-size: large;
+}
+
+h1, h2, h3 {
+	color: lightseagreen;
+	line-height: 250%;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th {
+	color: gray;
+}
+
+th, td {
+	padding: 1em;
+}
+
+tr, th, td {
+	text-align: center;
+}
+
+table, tr, th, td {
+	border: 1px solid lightgray;
+}
+
+td audio {
+	width: 100%;
+}
+
+a {
+	color: deepskyblue;
+}
