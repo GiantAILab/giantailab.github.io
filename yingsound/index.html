@@ -1,0 +1,714 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>YingSound</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    
+    <body>
+        <header class="content">
+            <div class="centerAlign">
+                <h1>YingSound:&nbsp;Video-Guided&nbsp;Sound&nbsp;Effects&nbsp;Generation<br>with&nbsp;Multi-modal&nbsp;Chain-of-Thought&nbsp;Controls</h1>
+            </div>
+            <div class="centerAlign">
+                <p>
+                    <span>Zihao&nbsp;Chen<sup>1</sup></span><span>,&nbsp;</span><span>Haomin&nbsp;Zhang<sup>1</sup></span><span>,&nbsp;</span><span>Xinhan&nbsp;Di<sup>1</sup></span><span>,&nbsp;</span><span>Haoyu&nbsp;Wang<sup>1,&nbsp;3</sup></span><span>,&nbsp;</span><span>Sizhe&nbsp;Shan<sup>1,&nbsp;3</sup></span><span>,&nbsp;</span><span>Junjie&nbsp;Zheng<sup>1</sup></span><span>,&nbsp;</span><span>Yunming&nbsp;Liang<sup>1</sup></span><span>,&nbsp;</span><span>Yihan&nbsp;Fan<sup>1,&nbsp;4</sup></span><span>,&nbsp;</span><span>Xinfa&nbsp;Zhu<sup>1,&nbsp;2</sup></span><span>,</span><br><span>Wenjie&nbsp;Tian<sup>1,&nbsp;2</sup></span><span>,&nbsp;</span><span>Yihua&nbsp;Wang<sup>1</sup></span><span>,&nbsp;</span><span>Chaofan&nbsp;Ding<sup>1</sup></span><span>&nbsp;and&nbsp;</span><span>Lei&nbsp;Xie<sup>2</sup></span>
+                    <br>
+                    <br>
+                    <span><sup>1</sup>AI&nbsp;Lab,&nbsp;Giant Network</span>
+                    <br>
+                    <span><sup>2</sup>Northwestern&nbsp;Polytechnical&nbsp;University</span>
+                    <br>
+                    <span><sup>3</sup>Zhejiang&nbsp;University</span>
+                    <br>
+                    <span><sup>4</sup>East&nbsp;China&nbsp;University&nbsp;of&nbsp;Science&nbsp;and&nbsp;Technology</span>
+                </p>
+            </div>
+            <div class="centerAlign">
+                <p>
+                    <a class="a_paper" href="https://arxiv.org/" target="_blank">[Arxiv]</a>
+                    <!--<a class="a_code" href="https://git.devcloud.ztgame.com/" target="_blank">[Code]</a>-->
+                    <a class="a_video" href="https://www.youtube.com/" target="_blank">[Promotional&nbsp;Video]</a>
+                </p>
+            </div>
+        </header>
+
+        <article class="content">
+            <div class="centerAlign">
+                <h2>Content</h2>
+            </div>
+            <div class="leftAlign">
+                <p>
+                    <a href="#section1" style="line-height: 1.5;">Promotional&nbsp;Video</a>
+                    <br>
+                    <a href="#section2" style="line-height: 1.5;">Abstract</a>
+                    <br>
+                    <a href="#section3" style="line-height: 1.5;">Method</a>
+                    <br>
+                    <a href="#section4" style="line-height: 1.5;">V2A&nbsp;Generation&nbsp;Results&nbsp;Visualization</a>
+                    <br>
+                    <a href="#section5" style="line-height: 1.5;">V2A&nbsp;Generation&nbsp;Examples</a>
+                    <br>
+                    <a class="a_sub" href="#section5_3" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;for&nbsp;Game</a>
+                    <br>
+                    <a class="a_sub" href="#section5_1" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;for&nbsp;Animation</a>
+                    <br>
+                    <a class="a_sub" href="#section5_4" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;for&nbsp;Real&nbsp;World</a>
+                    <br>
+                    <a class="a_sub" href="#section5_5" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;for&nbsp;Long&nbsp;Time&nbsp;Video</a>
+                    <br>
+                    <a class="a_sub" href="#section5_2" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;for&nbsp;AI&nbsp;Generated&nbsp;Video</a>
+                    <br>
+                    <a class="a_sub" href="#section5_7" style="line-height: 1.25;">Audio&nbsp;Generation&nbsp;Comparison&nbsp;with&nbsp;Prior&nbsp;Work</a>
+                    <br>
+                    <a class="a_sub" href="#section5_6" style="line-height: 1.25;">Text&nbsp;Control</a>
+                </p>
+            </div>
+        </article>
+
+        <article class="content" id="section1">
+            <div class="centerAlign">
+                <h2>Promotional&nbsp;Video</h2>
+            </div>
+            <div class="centerAlign">
+                <iframe style="height: 480px; width: 640px;" src="//player.bilibili.com/player.html?isOutside=true&aid=113503687934302&bvid=BV1z7UWYbE83&cid=26825328938&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            </div>
+        </article>
+
+        <article class="content" id="section2">
+            <div class="centerAlign">
+                <h2>Abstract</h2>
+            </div>
+            <div class="leftAlign">
+                <p>Generating sound effects for videos requires creating industry-standard sound effects that diverge significantly to produce high-quality audio generation in few-shot settings. To address this problem, we introduce YingSound, a foundation model designed for video-guided sound generation that supports high-quality audio generation in few-shot settings. The foundation model consists of two modules. The first module is a <span style="font-weight: bold;">conditional flow matching transformer that builds a fine-grained, learnable Audio-Vision Aggregator (AVA) that integrates high-resolution visual features with corresponding audio features across multiple stages</span>. The second module is a <span style="font-weight: bold;">multi-modal visual-audio chain-of-thought framework that leverages advanced audio generation techniques to produce high-quality audio in few-shot settings</span>. Finally, <span style="font-weight: bold;">an industry-standard video-to-audio dataset that encompasses a diverse array of real-world scenarios is presented</span>. Through both automated evaluations and human studies, we show that YingSound effectively generates high-quality synchronized sounds across diverse conditional inputs, surpassing existing methods in performance.</p>
+            </div>
+        </article>
+
+        <article class="content" id="section3">
+            <div class="centerAlign">
+                <h2>Method</h2>
+            </div>
+            <div class="centerAlign">
+                <img class="img_illustration" src="images/method.png" alt="Overview of YingSound">
+            </div>
+            <div class="centerAlign">
+                <p>Figure&nbsp;1:&nbsp;Overview&nbsp;of&nbsp;YingSound.</p>
+            </div>
+            <div class="leftAlign">
+                <p>It comprises two key components: <span style="font-weight: bold;">Conditional Flow Matching with Transformers and Adaptive Multi-modal Chain-of-Thought-Based Audio Generation</span>.</p>
+            </div>
+        </article>
+
+        <article class="content" id="section4">
+            <div class="centerAlign">
+                <h2>V2A&nbsp;Generation&nbsp;Results&nbsp;Visualization</h2>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <img src="images/tac_balloon.png" alt="Balloon">
+                </div>
+                <div class="cell">
+                    <img src="images/tac_yellowdog.png" alt="Yellow Dog">
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <img src="images/tac_lion.png" alt="Lion">
+                </div>
+                <div class="cell">
+                    <img src="images/tac_gun.png" alt="Gun">
+                </div>
+            </div>
+            <div class="centerAlign">
+                <p>Figure&nbsp;2:&nbsp;Temporal&nbsp;Alignment&nbsp;Comparison.</p>
+            </div>
+        </article>
+
+        <article class="content" id="section5">
+            <div class="centerAlign">
+                <h2>V2A&nbsp;Generation&nbsp;Examples</h2>
+            </div>
+
+            <div class="leftAlign" id="section5_3">
+                <h3>Audio&nbsp;Generation&nbsp;for&nbsp;Game</h3>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_6.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_7.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/game_10.mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="leftAlign" id="section5_1">
+                <h3>Audio&nbsp;Generation&nbsp;for&nbsp;Animation</h3>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/anime_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/anime_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/anime_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/anime_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video class="cell" controls>
+                        <source src="videos/anime_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video class="cell" controls>
+                        <source src="videos/anime_6.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video class="cell" controls>
+                        <source src="videos/anime_7.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video class="cell" controls>
+                        <source src="videos/anime_8.mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="leftAlign" id="section5_4">
+                <h3>Audio&nbsp;Generation&nbsp;for&nbsp;Real&nbsp;World</h3>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_22.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_6.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_7.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_8.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_9.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_10.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_11.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_12.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_13.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_14.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_15.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_16.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_17.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_18.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_19.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_20.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_23.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_24.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/real_21.mp4">
+                    </video>
+                </div>
+            </div>
+        
+            <div class="leftAlign" id="section5_5">
+                <h3>Audio&nbsp;Generation&nbsp;for&nbsp;Long&nbsp;Time&nbsp;Video</h3>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/long_6.mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="leftAlign" id="section5_2">
+                <h3>Audio&nbsp;Generation&nbsp;for&nbsp;AI&nbsp;Generated&nbsp;Video</h3>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_6.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/generated_1.mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="leftAlign" id="section5_7">
+                <h3>Audio&nbsp;Generation&nbsp;Comparison&nbsp;with&nbsp;Prior&nbsp;Work</h3>
+            </div>
+            <div class="row_4">
+                <div class="title">
+                    <span>Ours</span>
+                </div>
+                <div class="title">
+                    <span>GT</span>
+                </div>
+                <div class="title">
+                    <span>FoleyCrafter</span>
+                </div>
+                <div class="title">
+                    <span>Diff-Foley</span>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_1.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_2.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_2.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_2.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_3.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_3.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_4.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_4.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_4.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_4.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_5.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_5.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row_4">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/ours_6.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/gt_6.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/foleyCrafter_6.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/diffFoley_6.mp4">
+                    </video>
+                </div>
+            </div>
+        
+            <div class="leftAlign" id="section5_6">
+                <h3>Text&nbsp;Control</h3>
+            </div>
+            <div class="row_3">
+                <div class="title">
+                    <span>Without&nbsp;Prompt</span>
+                </div>
+                <div class="title">
+                    <span>Prompt:&nbsp;</span><span style="font-weight: bold;">motorcycle&nbsp;engine</span>
+                </div>
+                <div class="title">
+                    <span>Prompt:&nbsp;</span><span style="font-weight: bold;">car&nbsp;horn</span>
+                </div>
+            </div>
+            <div class="row_3">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_1_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_1_2.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_1_3.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="title">
+                    <span>Without&nbsp;Prompt</span>
+                </div>
+                <div class="title">
+                    <span>Prompt:&nbsp;</span><span style="font-weight: bold;">bird&nbsp;song</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_2_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_2_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="title">
+                    <span>Without&nbsp;Prompt</span>
+                </div>
+                <div class="title">
+                    <span>Prompt:&nbsp;</span><span style="font-weight: bold;">thunder</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_3_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_3_2.mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="title">
+                    <span>Without&nbsp;Prompt</span>
+                </div>
+                <div class="title">
+                    <span>Prompt:&nbsp;</span><span style="font-weight: bold;">subway&nbsp;driving</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_4_1.mp4">
+                    </video>
+                </div>
+                <div class="cell">
+                    <video controls>
+                        <source src="videos/text_4_2.mp4">
+                    </video>
+                </div>
+            </div>
+        </article>
+        
+        <footer class="content">
+            <div class="centerAlign">
+                <p>Xxxxx:&nbsp;Xxxxx&nbsp;xxxxx&nbsp;xxxxx&nbsp;xxx&nbsp;xxxx.</p>
+            </div>
+        </footer>
+    </body>
+</html>

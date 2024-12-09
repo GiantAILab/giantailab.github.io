@@ -1,0 +1,125 @@
+body {
+    text-align: center;
+}
+
+body header, body article, body footer {
+    display: block;
+    margin: 32px auto;
+}
+
+.content {
+    width: 1024px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 8px grey;
+    padding: 32px;
+}
+
+.content .centerAlign h1, .content .centerAlign h2, .content .centerAlign h3, .content .leftAlign h1, .content .leftAlign h2, .content .leftAlign h3 {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.content .centerAlign {
+    text-align: center;
+}
+
+.content .leftAlign {
+    text-align: left;
+}
+
+.content .img_illustration {
+    display: inline-block;
+    text-align: left;
+    width: 768px;
+}
+
+a {
+    text-decoration: none;
+    color: lightseagreen;
+}
+
+.a_paper, .a_code, .a_video {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.a_paper::before, .a_code::before, .a_video::before {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Segoe UISymbol', 'Noto Color Emoji';
+    padding-right: 0.5em;
+}
+
+.a_paper::before {
+    content: '📄';
+}
+
+.a_code::before {
+    content: '⌨';
+}
+
+.a_video::before {
+    content: '📽';
+}
+
+.a_sub::before {
+    content: '　';
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+
+.row_3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+
+.row_4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+
+.row .title, .row_3 .title, .row_4 .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 384px;
+}
+
+.row_3 .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 256px;
+}
+
+.row_4 .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 192px;
+}
+
+.row .cell video, .row_3 .cell video, .row_4 .cell video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: black;
+}
+
+.row .cell img, .row_3 .cell img, .row_4 .cell img {
+    width: 100%;
+    height: 100%;
+}
