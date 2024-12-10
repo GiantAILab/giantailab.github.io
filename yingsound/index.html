@@ -28,8 +28,6 @@
             <div class="centerAlign">
                 <p>
                     <a class="a_paper" href="https://arxiv.org/" target="_blank">[Arxiv]</a>
-                    <!--<a class="a_code" href="https://git.devcloud.ztgame.com/" target="_blank">[Code]</a>-->
-                    <a class="a_video" href="https://www.youtube.com/" target="_blank">[Promotional&nbsp;Video]</a>
                 </p>
             </div>
         </header>
@@ -72,7 +70,9 @@
                 <h2>Promotional&nbsp;Video</h2>
             </div>
             <div class="centerAlign">
-                <iframe style="height: 480px; width: 640px;" src="//player.bilibili.com/player.html?isOutside=true&aid=113503687934302&bvid=BV1z7UWYbE83&cid=26825328938&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <video style="height: 480px; width: 640px;" controls>
+                    <source src="videos/yingsound.mp4">
+                </video>
             </div>
         </article>
 
@@ -81,7 +81,7 @@
                 <h2>Abstract</h2>
             </div>
             <div class="leftAlign">
-                <p>Generating sound effects for videos requires creating industry-standard sound effects that diverge significantly to produce high-quality audio generation in few-shot settings. To address this problem, we introduce YingSound, a foundation model designed for video-guided sound generation that supports high-quality audio generation in few-shot settings. The foundation model consists of two modules. The first module is a <span style="font-weight: bold;">conditional flow matching transformer that builds a fine-grained, learnable Audio-Vision Aggregator (AVA) that integrates high-resolution visual features with corresponding audio features across multiple stages</span>. The second module is a <span style="font-weight: bold;">multi-modal visual-audio chain-of-thought framework that leverages advanced audio generation techniques to produce high-quality audio in few-shot settings</span>. Finally, <span style="font-weight: bold;">an industry-standard video-to-audio dataset that encompasses a diverse array of real-world scenarios is presented</span>. Through both automated evaluations and human studies, we show that YingSound effectively generates high-quality synchronized sounds across diverse conditional inputs, surpassing existing methods in performance.</p>
+                <p>Generating sound effects for videos in the industry, where only a small amount of labeled data is available for diverse practical scenes, requires the production of high-quality sounds in few-shot settings. To tackle the challenge of limited labeled data in real-world scenes to some extend, we introduce <span style="font-weight: bold;">YingSound, a foundation model designed for video-guided sound generation that supports high-quality audio generation in few-shot settings</span>. The foundation model consists of two modules. To achieve effective semantic alignment in sound generation across multiple modalities(video \& audio), the first module is <span style="font-weight: bold;">developed using a conditional flow-matching transformer. This module builds a learnable Audio-Vision Aggregator (AVA) that integrates high-resolution visual features with corresponding audio features at multiple stages</span>. Similarly, to achieve finer-level sound generation in few-shot settings to some extend, the second module is developed with a <span style="font-weight: bold;">proposed multi-modal visual-audio chain-of-thought approach</span>. Finally, <span style="font-weight: bold;">an industry-standard video-to-audio dataset that encompasses a diverse array of real-world scenarios is presented</span>. Through both automated evaluations and human studies, we show that YingSound effectively generates high-quality synchronized sounds across diverse conditional inputs.</p>
             </div>
         </article>
 
