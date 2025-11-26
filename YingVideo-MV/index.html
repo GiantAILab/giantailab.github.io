@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="YingVideo-MV: Agent-Based Music-Driven Video Generation - Giant AI Lab">
+  <meta name="description" content="Agent-based music-driven video generation system that creates synchronized music videos from audio input">
+  <meta name="keywords" content="music video generation, AI agents, computer vision, music synchronization, video synthesis">
+  <meta name="author" content="Giant AI Lab">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Giant AI Lab">
+  <meta property="og:title" content="YingVideo-MV: Agent-Based Music-Driven Video Generation">
+  <meta property="og:description" content="Agent-based music-driven video generation system that creates synchronized music videos from audio input">
+  <meta property="og:url" content="https://giant-ai-lab.com/YingVideo-MV">
+  <meta property="og:image" content="https://giant-ai-lab.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YingVideo-MV - Research Preview">
+  <meta property="article:published_time" content="2025-11-27T00:00:00.000Z">
+  <meta property="article:author" content="Giant AI Lab">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="music video generation">
+  <meta property="article:tag" content="AI agents">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@GiantAI_Lab">
+  <meta name="twitter:creator" content="@GiantAI_Lab">
+  <meta name="twitter:title" content="YingVideo-MV: Agent-Based Music-Driven Video Generation">
+  <meta name="twitter:description" content="Agent-based music-driven video generation system that creates synchronized music videos from audio input">
+  <meta name="twitter:image" content="https://giant-ai-lab.com/static/images/social.png">
+  <meta name="twitter:image:alt" content="YingVideo-MV - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="YingVideo-MV: Agent-Based Music-Driven Video Generation">
+  <meta name="citation_author" content="Giant AI Lab">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="">
+  <meta name="citation_pdf_url" content="https://giant-ai-lab.com/static/pdfs/YingVideo-MV-Tech_Report.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>YingVideo-MV: Agent-Based Music-Driven Video Generation | Giant AI Lab</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "YingVideo-MV: Agent-Based Music-Driven Video Generation",
+    "description": "Agent-based music-driven video generation system that creates synchronized music videos from audio input",
+    "author": [
+      {
+        "@type": "Organization",
+        "name": "Giant AI Lab"
+      }
+    ],
+    "datePublished": "2025-11-27",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Giant AI Lab",
+    },
+    "url": "https://giant-ai-lab.com/YingVideo-MV",
+    "image": "https://giant-ai-lab.com/static/images/pipeline.png",
+    "keywords": ["music video generation", "AI agents", "computer vision", "music synchronization"],
+    "abstract": "We present YingVideo-MV, the first cascaded framework for music-driven long-video generation. Our approach integrates audio semantic analysis, an interpretable shot planning module (MV-Director), temporal-aware diffusion Transformer architectures, and long-sequence consistency modeling to enable automatic synthesis of high-quality music performance videos from audio signals. We construct a large-scale Music-in-the-Wild Dataset by collecting web data to support the achievement of diverse, high-quality results. Observing that existing long-video generation methods lack explicit camera motion control, we introduce a camera adapter module that embeds camera poses into latent noise. To enhance continulity between clips during long-sequence inference, we further propose a time-aware dynamic window range strategy that adaptively adjust denoising ranges based on audio embedding. Comprehensive benchmark tests demonstrate that YingVideo-MV achieves outstanding performance in generating coherent and expressive music videos, and enables precise audio-motion-camera synchronization.",
+    "citation": "@inproceedings{yingvideo2025,\n  title={YingVideo-MV: Agent-Based Music-Driven Video Generation},\n  author={Giant AI Lab},\n  year={2025}\n}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://giant-ai-lab.com/YingVideo-MV"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Music Video Generation"
+      },
+      {
+        "@type": "Thing", 
+        "name": "AI Agents"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Giant AI Lab",
+    "url": "https://giant-ai-lab.com",
+    "logo": "https://giant-ai-lab.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/GiantAI_Lab",
+      "https://github.com/giant-ai-lab"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Video Synthesis with Multi-Agent Systems</h5>
+            <p>Advanced multi-agent framework for realistic video generation from textual descriptions.</p>
+            <span class="work-venue">CVPR 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Audio-Visual Synchronization in AI Systems</h5>
+            <p>Novel approach for precise audio-visual alignment in generated content.</p>
+            <span class="work-venue">NeurIPS 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Agent-Based Content Creation</h5>
+            <p>Scalable agent framework for automated multimedia content generation.</p>
+            <span class="work-venue">ICCV 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">YingVideo-MV: Agent-Based Music-Driven Video Generation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Giant AI Lab</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/giant-ai-lab/YingVideo-MV" target="_blank"
+                class="external-link button is-normal is-rounded">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+              We present YingVideo-MV, the first cascaded framework for music-driven long-video generation. Our approach integrates audio semantic analysis, an interpretable shot planning module (MV-Director), temporal-aware diffusion Transformer architectures, and long-sequence consistency modeling to enable automatic synthesis of high-quality music performance videos from audio signals. We construct a large-scale Music-in-the-Wild Dataset by collecting web data to support the achievement of diverse, high-quality results. Observing that existing long-video generation methods lack explicit camera motion control, we introduce a camera adapter module that embeds camera poses into latent noise. To enhance continulity between clips during long-sequence inference, we further propose a time-aware dynamic window range strategy that adaptively adjust denoising ranges based on audio embedding. Comprehensive benchmark tests demonstrate that YingVideo-MV achieves outstanding performance in generating coherent and expressive music videos, and enables precise audio-motion-camera synchronization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- MV-Video Section -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Long MV with High Character Consistency across Multiple Shots</h2>
+      <div class="columns is-multiline">
+        <!-- Single Row with 2 columns -->
+        <div class="column is-half">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/long_mv/1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/long_mv/2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End MV-Video Section -->
+
+<!-- Talking-head Video Section -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">High-performance Clip Videos</h2>
+      <div class="columns is-multiline">
+        <!-- Row 1 -->
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Row 2 -->
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/clip/6.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Talking-head Video Section -->
+
+<!-- Camera Move Video Section -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Camera Move Video</h2>
+      
+      <!-- Column Labels - Centered above each column -->
+      <div class="columns is-centered">
+        <div class="column is-one-quarter has-text-centered">
+          <h4 class="method-label">Pan Left</h4>
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <h4 class="method-label">Pan Right</h4>
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <h4 class="method-label">Zoom In</h4>
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <h4 class="method-label">Zoom Out</h4>
+        </div>
+      </div>
+      
+      <!-- Videos - 3 rows x 4 columns -->
+      <div class="columns is-multiline">
+        <!-- Row 1 - Song 1 -->
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song1/left.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song1/right.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song1/zoomin.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song1/zoomout.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <!-- Row 2 - Song 2 -->
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song2/left.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song2/right.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song2/zoomin.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song2/zoomout.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <!-- Row 3 - Song 3 -->
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song3/left.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song3/right.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song3/zoomin.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-quarter">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/camera_mov/song3/zoomout.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Camera Move Video Section -->
+
+<!-- Comparison with other methods Section -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Comparison with other methods</h2>
+      
+      <!-- Method Labels - Centered and only shown once -->
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <h4 class="method-label">StableAvatar</h4>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <h4 class="method-label">InfiniteTalk</h4>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <h4 class="method-label">Ours</h4>
+        </div>
+      </div>
+      
+      <!-- Videos -->
+      <div class="columns is-multiline">
+        <!-- Row 1 -->
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/1_stable.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/1_INF.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/ours/1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Row 2 -->
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/2_stable.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/2_INF.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/ours/2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Row 3 -->
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/3_stable.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/3_INF.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-one-third">
+          <video controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/compare/ours/3.mp4" type="video/mp4">
+          </video>
+        </div>   
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Comparison with other methods Section -->
+
+<!-- Pipeline Overview Section -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Framework Overview</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content"> <!-- 移除了 has-text-centered 类 -->
+            <div class="has-text-centered"> <!-- 图片保持居中 -->
+              <img src="static/images/pipeline.png" alt="YingVideo-MV Pipeline Overview" loading="lazy" style="max-width: 100%; height: auto;">
+            </div>
+            <p class="mt-4" style="text-align: left;"> <!-- 文字居左 -->
+              Our framework integrates multimodal inputs (music, text, and images) to enable segmented generation of music-performing portrait videos under the guidance of a global planning module. The planning agent strategically invokes specialized tools according to sub-task requirements, ultimately generating three core outputs conditioned on initial-frame specifications: (1) photorealistic music-performing portrait images, (2) coherent dynamic camera trajectories, and (3) synchronized audio sequences aligned with visual performance cues.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Pipeline Overview Section -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{yingvideo2025,
+  title={YingVideo-MV: Agent-Based Music-Driven Video Generation},
+  author={Giant AI Lab},
+  year={2025}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
