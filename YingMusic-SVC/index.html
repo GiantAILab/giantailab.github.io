@@ -248,7 +248,32 @@
       margin-right: 4px;
       margin-top: 2px;
     }
+    .bibtex-block {
+  font-size: 0.85rem;
+}
 
+.bibtex-block pre {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #e5e7eb;
+  overflow-x: auto;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.bibtex-block code {
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* 页脚样式（你原来有 .footer 结构，但没样式的话可以加上） */
+.footer {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  text-align: center;
+  margin-top: 16px;
+}
     @media (max-width: 640px) {
       .toc ul { columns: 1; }
       h1 { font-size: 1.7rem; }
@@ -309,6 +334,7 @@
       <li><a href="#abstract">2. Abstract</a></li>
       <li><a href="#method">3. Method</a></li>
       <li><a href="#audio-demos">4. Audio Demos</a></li>
+      <li><a href="#citation">5. Citation / BibTeX</a></li>
     </ul>
   </div>
 
@@ -449,6 +475,17 @@
     </div>
 
   </section>
+  <section id="citation" class="bibtex-block">
+    <h2>5. Citation</h2>
+    <p>If you find YingMusic-SVC helpful in your research or product, please consider citing:</p>
+    <pre><code>@article{chen2025yingmusicsvc,
+  title={YingMusic-SVC: Real-World Robust Zero-Shot Singing Voice Conversion with Flow-GRPO and Singing-Specific Inductive Biases},
+  author={Chen, Gongyu and Zhang, Xiaoyu and Weng, Zhenqiang and Zheng, Junjie and Shen, Da and Ding, Chaofan and Zhang, Wei-Qiang and Chen, Zihao},
+  journal={arXiv preprint arXiv:2512.04793},
+  year={2025}
+}
+</code></pre>
+  </section>
 
 
 
@@ -460,4 +497,5 @@
 </div>
 </body>
 </html>
+
 
